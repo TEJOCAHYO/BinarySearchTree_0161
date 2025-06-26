@@ -103,9 +103,7 @@ void search(int element, node *&parent, node *&currentnode)
         
     }    
 
-      
-
-        void postorder(node *ptr)
+        void preorder(node *ptr)
     {
         if (isEmpty())
         {
@@ -115,10 +113,13 @@ void search(int element, node *&parent, node *&currentnode)
         if (ptr == nullptr)
             return;
 
-        postorder(ptr->leftchild);
-        postorder(ptr->rightchild);
         cout << ptr->info << " ";
+        preorder(ptr->leftchild);
+        preorder(ptr->rightchild);
+        
     }    
+
+     
 
     bool isEmpty()
     {
