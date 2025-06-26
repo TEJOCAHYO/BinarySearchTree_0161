@@ -2,13 +2,6 @@
  using namespace std;
 
  
-    // Constructor for the node class
-    Node()
-    {
-        leftchild = nullptr; // Initialize left child to null
-        rightchild = nullptr; // Intialize right child to null
-    }
- };
  
  class BinaryTree
  {
@@ -60,3 +53,26 @@
         }
         // step 7 : If the value in the data field of the new node is greater than that of the parent
         else if (x < parent->info)
+        {
+            // 7a : Make the right child of the parent point to the new node
+            parent->rightchild = newNode;
+
+            // 7b : Exit
+            return;
+        }
+    }
+    
+    void search(int elemnt, Node *&parent, Node *&currentNode)
+    {
+        // this function searches the currentNode of the specified node as well as the current Node of its parent
+        currentNode = ROOT;
+        parent = nullptr;
+        while ((currentNode != nullptr) && (currentNode->info != element))
+        {
+            parent = currentNode;
+            if (element < currentNode->info)
+                currentNode = currentNode->leftchild;
+            else 
+                currentNode = currentNode->rightchild;
+        }
+    }
