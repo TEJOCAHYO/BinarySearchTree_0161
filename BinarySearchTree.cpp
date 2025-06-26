@@ -1,16 +1,22 @@
 #include <iostream>
  using namespace std;
 
- 
- 
- class BinaryTree
+ class Node
  {
-    Node*ROOT;
+public: 
+    int info;
+    Node*leftchild;
+    Node*rightchild;
 
-    BinarytTree()
+    // Constructor for the node class
+    Node()
     {
-        ROOT = nullptr; // Intializing ROOT to null 
+        leftchild = nullptr; // Initialize left child to null
+        rightchild = nullptr; // Intialize right child to null
     }
+ };
+ 
+ 
 
     void insert()
     {
@@ -76,3 +82,19 @@
                 currentNode = currentNode->rightchild;
         }
     }
+
+    void inorder(Node *ptr)
+    {
+        if (isempty())
+        {
+            cout << "Tree is empty" << endl;
+            return;
+        }
+        if (ptr == nullptr)
+        return;
+    inorder(ptr->leftchild);
+    cout << ptr->info<<" "; // parent
+    inorder(ptr->rightchild);
+    }
+
+    
