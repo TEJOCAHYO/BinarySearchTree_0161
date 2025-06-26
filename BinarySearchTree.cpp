@@ -76,7 +76,14 @@ void search(int element, node *&parent, node *&currentnode)
         // This Function searches the currentNode of the specified Node as well as the current Node of its parent
         currentnode = ROOT;
         parent = nullptr;
-       
+        while ((currentnode != nullptr) && (currentnode->info != element))
+        {
+            parent = currentnode;
+            if (element < currentnode->info)
+                currentnode = currentnode->leftchild;
+            else
+                currentnode = currentnode->rightchild;
+        }
     }
 
     
@@ -96,21 +103,7 @@ void search(int element, node *&parent, node *&currentnode)
         
     }    
 
-        void preorder(node *ptr)
-    {
-        if (isEmpty())
-        {
-            cout << "Tree is empty" << endl;
-            return;
-        }
-        if (ptr == nullptr)
-            return;
-
-        cout << ptr->info << " ";
-        preorder(ptr->leftchild);
-        preorder(ptr->rightchild);
-        
-    }    
+      
 
         void postorder(node *ptr)
     {
