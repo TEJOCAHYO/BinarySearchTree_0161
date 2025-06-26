@@ -70,7 +70,20 @@ public:
             //7b : exit 
             return ;
         } 
- 
+    }
+void search(int element, node *&parent, node *&currentnode)
+    {
+        // This Function searches the currentNode of the specified Node as well as the current Node of its parent
+        currentnode = ROOT;
+        parent = nullptr;
+        while ((currentnode != nullptr) && (currentnode->info != element))
+        {
+            parent = currentnode;
+            if (element < currentnode->info)
+                currentnode = currentnode->leftchild;
+            else
+                currentnode = currentnode->rightchild;
+        }
     }
 
     
@@ -158,25 +171,5 @@ int main(){
             x.inorder(x.ROOT);
             break;
         }
-        case '3':
-        {
-
-            x.preorder(x.ROOT);
-            break;
-        }
-        case '4':
-        {
-
-            x.postorder(x.ROOT);
-            break;
-        }
-        case '5':
-            return 0;
-        default:
-        {
-            cout << "Invalid option" << endl;
-            break;
-        }
-        }
-    }
+        
 };
